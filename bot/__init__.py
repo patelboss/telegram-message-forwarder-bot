@@ -9,7 +9,6 @@ from utils import temp
 from pyrogram import types
 from aiohttp import web
 from plugins import web_server
- PORT = "8080"
 
 logging.basicConfig(format='[%(asctime)s - %(pathname)s - %(levelname)s] %(message)s',
                     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
