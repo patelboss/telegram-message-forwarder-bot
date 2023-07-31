@@ -2,7 +2,7 @@ import os
 import random
 from time import sleep
 from pyrogram import filters
-from bot import Logging, app, advance_config, chats_data, from_chats, to_chats, \
+from bot import logging, app, advance_config, chats_data, from_chats, to_chats, \
                 remove_strings, replace_string, sudo_users
 from bot.helper.utils import get_formatted_chat
 
