@@ -1,37 +1,10 @@
 import os
 import sys
-import signal
 import logging
 from os import environ
 from dotenv import load_dotenv
 from pyrogram import Client
 from bot.helper.utils import get_formatted_chats
-
-# ... Existing code ...
-
-def sigterm_handler(signum, frame):
-    """
-    SIGTERM signal handler to perform cleanup before exiting.
-    """
-    LOG.info("Received SIGTERM signal. Performing cleanup...")
-
-    # Add your cleanup code here, if needed.
-    # For example, save data, close files, or release resources.
-
-    LOG.info("Cleanup complete. Exiting...")
-    sys.exit(0)
-
-# ... Existing code ...
-
-if __name__ == "__main__":
-    # Set the SIGTERM signal handler
-    signal.signal(signal.SIGTERM, sigterm_handler)
-
-    # ... Existing code ...
-
-    with app:
-        # ... Existing code ...
-
 logging.basicConfig(format='[%(asctime)s - %(pathname)s - %(levelname)s] %(message)s',
                     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
                     level=logging.INFO)
