@@ -5,10 +5,9 @@ from os import environ
 from dotenv import load_dotenv
 from pyrogram import Client
 from bot.helper.utils import get_formatted_chats
-from utils import temp
 from pyrogram import types
 from aiohttp import web
-from plugins import web_server
+
 
 logging.basicConfig(format='[%(asctime)s - %(pathname)s - %(levelname)s] %(message)s',
                     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
