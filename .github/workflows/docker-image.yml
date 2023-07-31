@@ -1,21 +1,23 @@
-FROM python:3.8-slim-buster
+# Start from a base image with Python 3.7 installed
 
-RUN apt-get update && apt-get upgrade -y
+FROM python:3.7
 
-RUN apt-get install -y git
+# Set the working directory in the container
 
-COPY requirements.txt /requirements.txt
+WORKDIR /app
 
-RUN pip3 install --no-cache-dir -r /requirements.txt
+# Copy the requirements file to the working directory
 
-WORKDIR /LazyPrincess
+COPY requirements.txt .
 
-COPY start.sh /start.sh
+# Install the required Python packages
 
-RUN chmod +x /start.sh
+RUN pip install -r requirements.txt
 
-CMD ["/bin/bash", "/start.sh"]
+# Copy the entire project directory to the working directory
 
-docker build -t Filmykeedha .
+COPY . .
 
-docker run -d Filmykeedha
+# Specify the command to run when the container starts
+
+CMD ["python", "app.py"]
