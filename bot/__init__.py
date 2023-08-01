@@ -1,5 +1,6 @@
 import os
 import sys
+import signal
 import logging
 from os import environ
 from dotenv import load_dotenv
