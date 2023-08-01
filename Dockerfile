@@ -12,7 +12,7 @@ RUN apt-get install -y git
 COPY requirements.txt /requirements.txt
 
 # Install Python dependencies from requirements.txt
-RUN pip3 install --no-cache-dir -r /requirements.txt
+RUN pip3 install -r /requirements.txt
 
 # Set the working directory
 WORKDIR /cd
