@@ -9,31 +9,33 @@ logging.basicConfig(format='[%(asctime)s - %(pathname)s - %(levelname)s] %(messa
                     level=log_level)
 LOG = logging.getLogger(__name__)
 
-
 def get_formatted_chats(chats, app):
     formatted_chats = []
     for chat in chats:
-      try:
-        if isInt(chat):
-          formatted_chats.append(int(chat))
-        elif chat.startswith("@"):
-          formatted_chats.append(app.get_chat(chat.replace("@", "")).id)
-        elif chat.startswith("https://t.me/c/") or chat.startswith("https://telegram.org/c/") or chat.startswith("https://telegram.dog/c/"):
-          chat_id = chat.split("/")[4]
-          if isInt(chat_id):
-            chat_id = "-100" + str(chat_id)
-            chat_id = int(chat_id)
-          else:
-            chat_id = app.get_chat(chat_id).id
-          formatted_chats.append(chat_id)
-        else:
-          LOG.warn("Chat ID cannot be parsed: {chat}")
-      except Exception as e:
-        LOG.error("Chat ID cannot be parsed: {chat}")
-        LOG.error(e)
-        sys.exit(1)
-    return formatted_chats
+        try:
+            if isInt(chat):
+                formatted_chats.append(int(chat))
+            elif chat.startswith("@"):
+                formatted_chats.append(app.get_chat(chat.replace("@", "")).id)
+            elif chat.startswith("https://t.me/c/") or chat.startswith("https://telegram.org/c/") or chat.startswith("https://telegram.dog/c/"):
+                chat_id = chat.split("/")[4]
+                if isInt(chat_id):
+                    chat_id = "-100" + str(chat_id)
+                    chat_id = int(chat_id)
+                else:
+                    chat_id = app.get_chat(chat_id).id
+                formatted_chats.append(chat_id)
+            else:
+                LOG.warn("Chat ID cannot be parsed: {chat}")
+        except Exception as e:
+            LOG.error("Chat ID cannot be parsed: {chat}")
+            LOG.error(e)
+            sys.exit(1)
 
+    # Handle the SIGINT signal
+    signal.signal(signal.SIGINT, lambda signal, frame: sys.exit(0))
+
+    return formatted_chats
 
 def get_formatted_chat(chat, app):
     try:
