@@ -1,6 +1,7 @@
 import sys
 import logging
 from os import environ
+import signal
 
 log_level = environ.get("LOG_LEVEL", "INFO").upper()
 logging.basicConfig(format='[%(asctime)s - %(pathname)s - %(levelname)s] %(message)s',
