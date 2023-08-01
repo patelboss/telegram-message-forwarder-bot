@@ -1,4 +1,4 @@
-import bot.app.utils
+import bot.helper.utils
 import sys
 import logging
 from os import environ
@@ -49,4 +49,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
