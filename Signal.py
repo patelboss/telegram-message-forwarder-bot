@@ -1,3 +1,4 @@
+import bot.app.utils
 import sys
 import logging
 from os import environ
@@ -45,9 +46,7 @@ def main():
     formatted_chats = get_formatted_chats(chats, app)
     print(formatted_chats)
 
-    # Terminate the program without sending any signals
-    sys.exit()
-
 
 if __name__ == "__main__":
     main()
+
