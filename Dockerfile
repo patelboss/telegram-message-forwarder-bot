@@ -15,7 +15,7 @@ COPY requirements.txt /requirements.txt
 RUN pip3 install -r /requirements.txt
 
 # Set the working directory
-WORKDIR /cd
+WORKDIR /app
 
 # Copy start.sh script
 COPY start.sh /start.sh
